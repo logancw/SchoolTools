@@ -10,8 +10,13 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     chrome.browsingData.removeCache({ "since": oneWeekAgo });
     chrome.browsingData.removeCookies({ "since": oneWeekAgo });
     chrome.browsingData.removeDownloads({ "since": oneWeekAgo });
-    chome.browsingData.removeHistory({ "since": oneWeekAgo });
+    chrome.browsingData.removeHistory({ "since": oneWeekAgo });
     // Add more remove methods as needed
-    console.log("Cleared login data.");
+    chrome.notifications.create({
+      iconUrl: 'icon.png',
+      type: 'basic',
+      title: 'Login Data Cleared',
+      message: 'Your login data has been cleared.'
+    });
   }
 });
